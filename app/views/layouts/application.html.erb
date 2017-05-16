@@ -3,11 +3,11 @@
   <head>
     <title>RonbunHub</title>
     <%= csrf_meta_tags %>
-
-    <%= javascript_include_tag 'application', media: 'all' %>
+    <%= action_cable_meta_tag %>
   </head>
 
   <body>
     <%= yield %>
   </body>
+  <script type="text/javascript" charset="UTF-8" src="/bundle.js"></script>
 </html>

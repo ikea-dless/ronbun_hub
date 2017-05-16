@@ -1,0 +1,17 @@
+{
+  "include": [
+    "app/frontend"
+  ],
+  "exclude": [
+    "node_modules",
+    "public"
+  ],
+  "compilerOptions": {
+    "baseUrl": "app/frontend",
+    "jsx": "react",
+    "lib": ["es6", "dom"],
+    "module": "es6",
+    "target": "es5",
+    "moduleResolution": "node"
+  }
+}
