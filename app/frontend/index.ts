@@ -1,20 +1,28 @@
 import * as ActionCable from "actioncable"
 
-const App = ActionCable.createConsumer("ws://localhost:3000/cable")
+const App = ActionCable.createConsumer()
 
-App.room = App.subscriptions.create("RoomChannel", {
-  connected: function(): void {
+interface RoomChannel extends ActionCable.Channel {
+  speak(data: any): void
+}
+
+const roomChannel = App.subscriptions.create("RoomChannel", {
+  connected(): void {
+    console.log("connected")
   },
-  speak: function(message: string): void {
+  disconnected(): void {
+    console.log("disconnected")
+  },
+  speak(message: string): void {
     this.perform("speak", {message: message})
   },
-  received: function(data: any): void {
+  received(data: any): void {
     console.log(data["message"])
   }
-})
+}) as RoomChannel
 
 document.querySelector("[data-behavior~=room_speaker]").addEventListener("keypress", (e: any): void => {
   if (e.keyCode === 13) {
-    App.room.speak(e.target.value)
+    roomChannel.speak(e.target.value)
   }
 }, false)
