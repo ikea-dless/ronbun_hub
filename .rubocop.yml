@@ -1,0 +1,63 @@
+# 全cop設定
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - vendor/**/*
+    - bin/**
+    - db/**/*
+  DisplayCopNames: true
+
+Rails:
+  Enabled: true
+
+# 日本語でのコメントを許可
+AsciiComments:
+  Enabled: false
+
+# メソッドの行数の多さを警告しない
+Metrics/MethodLength:
+  Enabled: false
+
+# 後置のif, unlessが使える場合、85文字以下なら警告する
+Style/IfUnlessModifier:
+  MaxLineLength: 85
+
+# コメントの#のあとにスペースがない場合でも警告しない
+Layout/LeadingCommentSpace:
+  Enabled: false
+
+# 数字の桁数が6以上で、セパレートしていないと警告する
+Style/NumericLiterals:
+  MinDigits: 6
+
+# 1行の文字数を128に制限
+Metrics/LineLength:
+  Max: 128
+
+# Hoge::fugaのネスト形式を許可する
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# メソッドの最後の引数にハッシュを利用した際のブレースの有無を警告しない
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+# StringLiteralがダブルクォートでなければ警告する
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# booleanなメソッドや&&, ||を使うときメソッド呼び出しに引数を必要とする
+Lint/RequireParentheses:
+  Enabled: true
+
+# top levelなクラスに説明文がない場合でも警告しない
+Style/Documentation:
+  Enabled: false
+
+# 書式付き文字列のフォーマットについて警告しない
+Style/FormatString:
+  Enabled: false
+
+# Gemfileのgemがアルファベット順に並んでいなくても警告しない
+Bundler/OrderedGems:
+  Enabled: false
