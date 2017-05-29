@@ -2,7 +2,7 @@ var path = require("path")
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "app/frontend/index.ts")
+    app: path.resolve(__dirname, "app/frontend/Index.tsx")
   },
   output: {
     path: path.resolve(__dirname, "public"),

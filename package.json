@@ -6,12 +6,24 @@
     "watch": "$(npm bin)/webpack --watch"
   },
   "dependencies": {
-    "actioncable": "^5.1.1"
+    "actioncable": "^5.1.1",
+    "doc-ready": "^1.0.4",
+    "lodash": "^4.17.4",
+    "react": "^16.0.0-alpha.12",
+    "react-dom": "^16.0.0-alpha.12",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "@types/actioncable": "^0.0.2",
-    "ts-loader": "^2.0.3",
-    "typescript": "^2.3.2",
-    "webpack": "^2.5.1"
+    "@types/lodash": "^4.14.64",
+    "@types/react": "^15.0.25",
+    "@types/react-dom": "^15.5.0",
+    "@types/uuid": "^2.0.29",
+    "redux-devtools-extension": "^2.13.2",
+    "ts-loader": "^2.1.0",
+    "typescript": "^2.3.3",
+    "webpack": "^2.6.1"
   }
 }
