@@ -10,6 +10,8 @@ end
 gem "rails", "~> 5.1.1"
 gem "mysql2", ">= 0.3.18", "< 0.5"
 gem "puma", "~> 3.7"
+gem "sorcery", "~> 0.1"
+gem "oauth2", "~> 1.3"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 
