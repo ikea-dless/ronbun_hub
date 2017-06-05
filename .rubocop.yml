@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 # 全cop設定
 AllCops:
   TargetRubyVersion: 2.4
