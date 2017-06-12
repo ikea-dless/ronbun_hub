@@ -1,7 +1,7 @@
 import * as React from "react"
 import { values } from "lodash"
 import { CommentEntity } from "constants/StateTypes/comments"
-import * as uuid from "uuid"
+import * as uuid from "uuid/v4"
 
 // TODO: 型付け
 interface PropTypes {
