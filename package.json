@@ -9,16 +9,16 @@
     "actioncable": "^5.1.1",
     "doc-ready": "^1.0.4",
     "lodash": "^4.17.4",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
-    "uuid": "^3.0.1"
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "@types/actioncable": "^0.0.2",
-    "@types/lodash": "^4.14.65",
-    "@types/react": "^15.0.27",
+    "@types/lodash": "^4.14.66",
+    "@types/react": "^15.0.29",
     "@types/react-dom": "^15.5.0",
     "@types/uuid": "^3.0.0",
     "redux-devtools-extension": "^2.13.2",
