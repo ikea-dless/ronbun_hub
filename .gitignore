@@ -19,3 +19,5 @@
 .byebug_history
 public/bundle.js
 public/bundle.js.map
+/public/frontend
+/node_modules
