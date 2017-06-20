@@ -35,7 +35,7 @@
     "redux-devtools-extension": "^2.13.2",
     "ts-loader": "^2.1.0",
     "typescript": "^2.3.4",
-    "webpack": "^2.6.1",
+    "webpack": "^3.0.0",
     "webpack-dev-server": "^2.4.5"
   }
 }
