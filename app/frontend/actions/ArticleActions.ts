@@ -13,6 +13,19 @@ export const changeArticleContent = (content: string): ChangeArticleContent => (
   }
 )
 
+interface PostArticle {
+  type: ArticleActionType
+  payload: ArticleEntity
+}
+
+export const postArticle = (content: string): PostArticle => (
+  {
+    type: "POST_ARTICLE",
+    payload: { content }
+  }
+)
+
 export default {
-  changeArticleContent
+  changeArticleContent,
+  postArticle
 }

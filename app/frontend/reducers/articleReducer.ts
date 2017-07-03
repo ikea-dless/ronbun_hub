@@ -12,6 +12,10 @@ export const articleReducer = (state: ArticleEntity = initialState, { type, payl
       const newState = { content: payload.content }
       return { ...state, ...newState }
     }
+    case "POST_ARTICLE": {
+      const newState = { content: payload.content }
+      return { ...state, ...newState }
+    }
 
     default: {
       return state
