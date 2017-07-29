@@ -1,3 +1,4 @@
 export interface ArticleEntity {
-  content: string
+  id?: string
+  content?: string
 }

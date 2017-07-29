@@ -25,7 +25,33 @@ export const postArticle = (content: string): PostArticle => (
   }
 )
 
+interface FetchArticle {
+  type: ArticleActionType
+  payload: ArticleEntity
+}
+
+export const fetchArticle = (id: string): FetchArticle => (
+  {
+    type: "FETCH_ARTICLE",
+    payload: { id }
+  }
+)
+
+interface FullfilledArticle {
+  type: ArticleActionType
+  payload: ArticleEntity
+}
+
+export const fullfilledArticle = (article: ArticleEntity): FullfilledArticle => (
+  {
+    type: "FULLFILLED_ARTICLE",
+    payload: { ...article }
+  }
+)
+
 export default {
   changeArticleContent,
-  postArticle
+  postArticle,
+  fetchArticle,
+  fullfilledArticle
 }

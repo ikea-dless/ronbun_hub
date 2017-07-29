@@ -6,9 +6,16 @@ import { ArticleEntity } from "constants/StateTypes/article"
 import ArticleActions from "actions/ArticleActions"
 import { CommentContainer } from "containers/CommentContainer"
 
-const mapStateToProps = (state): ArticleEntity => (
-  { content: state.article.content }
-)
+interface StateProps {
+  content: string
+  articleId: string
+}
+
+const mapStateToProps = (state, ownProps): StateProps => {
+  const content: string = state.article.content
+  const articleId: string = ownProps.match.params.id
+  return { content, articleId }
+}
 
 interface DispatchType {
   actions: { [key: string]: Function }
@@ -22,8 +29,8 @@ type PropsType = DispatchType & ArticleEntity
 
 const BaseComponent: React.SFC<PropsType> = (props) => (
   <div>
-    <Article { ...this.props } />
-    <CommentContainer { ...this.props } />
+    <Article { ...props } />
+    <CommentContainer { ...props } />
   </div>
 )
 
