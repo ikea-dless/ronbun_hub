@@ -13,6 +13,7 @@ gem "puma", "~> 3.7"
 gem "sorcery", "~> 0.1"
 gem "oauth2", "~> 1.3"
 gem "webpacker", "~> 2.0"
+gem "active_model_serializers", "~> 0.10.6"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 
