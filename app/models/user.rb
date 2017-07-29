@@ -6,4 +6,7 @@ class User < ApplicationRecord
   end
 
   has_many :authentications, dependent: :destroy
+  has_many :articles
+
+  validates :id, inclusion: { in: [1,2]}
 end

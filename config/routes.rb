@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
+  namespace :api do
+    resources :articles, only: %i[show create]
+  end
+
   resource :user, only: [] do
     get :sign_in
   end
