@@ -6,10 +6,10 @@ interface ChangeArticleContent {
   payload: ArticleEntity
 }
 
-export const changeArticleContent = (content: string): ChangeArticleContent => (
+export const changeArticleContent = (id: string, content: string): ChangeArticleContent => (
   {
     type: "CHANGE_ARTICLE_CONTENT",
-    payload: { content }
+    payload: { id, content }
   }
 )
 
