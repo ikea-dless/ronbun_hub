@@ -1,10 +1,19 @@
 import * as React from "react"
+import { Redirect } from "react-router-dom"
 
 export class NewArticle extends React.Component<any, any> {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.id != undefined) {
+      // idがpropsとして取得できれば、DBにレコードが保存されているとみなす
+      this.setState({ isCreated: true })
+    }
+  }
+
   constructor (props) {
     super(props)
     this.state = {
-      content: this.props.content
+      content: this.props.content,
+      isCreated: false
     }
   }
 
@@ -16,6 +25,9 @@ export class NewArticle extends React.Component<any, any> {
           onChange={ this.updateLocalContent }
         />
         <input type="submit" value="作成" onClick={ this.postLocalContent } />
+
+        { /* レコードが作成されていれば、そのレコードの詳細にリダイレクト */}
+        { this.state.isCreated ? <Redirect to={ `/articles/${this.props.id}` } /> : null }
       </div>
     )
   }

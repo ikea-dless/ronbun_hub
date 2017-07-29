@@ -7,7 +7,8 @@ import { NewArticle } from "components/Articles/New"
 
 const mapStateToProps: any = (state: any) => (
   {
-    content: state.article.content
+    content: state.article.content,
+    id: state.article.id
   }
 )
 

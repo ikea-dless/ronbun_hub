@@ -5,16 +5,15 @@ import "rxjs/add/operator/mergeMap"
 import "rxjs/add/operator/map"
 import * as actions from "actions/ArticleActions"
 
-import "rxjs/add/operator/do"
-import "rxjs/add/operator/ignoreElements"
+// import "rxjs/add/operator/do"
+// import "rxjs/add/operator/ignoreElements"
 
 const postArticleEpic = (action$, _store, { postArticle } = api) => {
   return action$.ofType("POST_ARTICLE")
     .mergeMap(action$ =>
       postArticle(action$.payload)
     )
-    .do(action => { console.log(action) })
-    .ignoreElements()
+    .map((article) => actions.fullfilledArticle(article.data))
 }
 
 const fetchArticleEpic = (action$, _store, { fetchArticle } = api) => {
