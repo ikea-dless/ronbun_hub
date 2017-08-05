@@ -1,5 +1,13 @@
 class Article < ApplicationRecord
+  after_update_commit :broadcast
+
   belongs_to :user
 
   validates :content, presence: true
+
+  private
+
+  def broadcast
+    ActionCable.server.broadcast("article_#{id}", self)
+  end
 end

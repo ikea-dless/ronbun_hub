@@ -1,5 +1,5 @@
 class Api::ArticlesController < Api::ApplicationController
-  before_action :set_article, only: %i[show]
+  before_action :set_article, only: %i[show update]
 
   def create
     article = current_user.articles.create!(article_params)
@@ -7,6 +7,11 @@ class Api::ArticlesController < Api::ApplicationController
   end
 
   def show
+    render json: @article
+  end
+
+  def update
+    @article.update!(article_params)
     render json: @article
   end
 

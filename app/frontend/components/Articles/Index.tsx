@@ -10,6 +10,7 @@ interface PropsType extends ArticleEntity {
 export class Article extends React.PureComponent<any, any> {
   componentWillMount() {
     this.props.actions.fetchArticle(this.props.articleId)
+    articleSubscriptions(this.props.articleId, this.props.actions)
   }
 
   render () {

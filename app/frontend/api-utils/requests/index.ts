@@ -12,3 +12,7 @@ export const postArticle = (newArticle) => (
 export const fetchArticle = (articleId: string) => (
   api.get(articles(articleId))
 )
+
+export const patchArticle = (id: string, content: string) => (
+  api.patch(articles(id), { article: { content } })
+)

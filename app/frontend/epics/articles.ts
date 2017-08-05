@@ -28,20 +28,14 @@ const fetchArticleEpic = (action$, _store, { fetchArticle } = api) => {
     .map((article) => actions.fullfilledArticle(article.data))
 }
 
-const updateArticleContent = (action$, _store) => {
+const updateArticleContent = (action$, _store, { patchArticle } = api) => {
   return action$.ofType("CHANGE_ARTICLE_CONTENT")
     .debounceTime(500)
-    .distinctUntilChanged((p, n) => p.payload.input === n.payload.input)
-    .switchMap(action$ =>
-      subscriptions(action$)
+    .distinctUntilChanged((p, n) => p.payload.content === n.payload.content)
+    .mergeMap(action$ =>
+      patchArticle(action$.payload.id, action$.payload.content)
     )
     .map((article) => actions.fullfilledArticle(article.data))
-}
-
-const subscriptions = (obs$) => {
-  console.log(obs$)
-  const sub = articleSubscriptions(obs$.payload.id)
-  return sub.update(obs$.payload)
 }
 
 export const articleEpics = combineEpics(

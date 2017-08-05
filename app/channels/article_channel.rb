@@ -2,18 +2,6 @@
 
 class ArticleChannel < ApplicationCable::Channel
   def subscribed
-    stream_from article
-  end
-
-  def update(article)
-    if article.update(content: article["content"])
-      broadcast_to(@article)
-    end
-  end
-
-  private
-
-  def article
-    Article.find(params[:room])
+    stream_from "article_#{params['room']}"
   end
 end
