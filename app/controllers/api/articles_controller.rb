@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::ArticlesController < Api::ApplicationController
   before_action :set_article, only: %i[show update]
 

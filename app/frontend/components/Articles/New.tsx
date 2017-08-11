@@ -24,7 +24,7 @@ export class NewArticle extends React.Component<any, any> {
           value={ this.state.content }
           onChange={ this.updateLocalContent }
         />
-        <input type="submit" value="作成" onClick={ this.postLocalContent } />
+        <input type="submit" value="作成" onClick={ this.validateLocalContent } />
 
         { /* レコードが作成されていれば、そのレコードの詳細にリダイレクト */}
         { this.state.isCreated ? <Redirect to={ `/articles/${this.props.id}` } /> : null }
@@ -36,7 +36,7 @@ export class NewArticle extends React.Component<any, any> {
     this.setState({content: e.target.value})
   }
 
-  private postLocalContent = (): void => {
-    this.props.actions.postArticle(this.state.content)
+  private validateLocalContent = (): void => {
+    this.props.actions.validateArticle(this.state.content)
   }
 }

@@ -12,6 +12,21 @@ import { articleSubscriptions } from "websocket-utils/cable/subscriptions/articl
 import "rxjs/add/operator/do"
 import "rxjs/add/operator/ignoreElements"
 
+const validateArticleEpic = (action$, _store, { validateArticle } = api) => {
+  return action$.ofType("VALIDATE_ARTICLE")
+    .mergeMap(action$ =>
+      validateArticle(action$.payload.content)
+    )
+    .map(response => {
+      if (response.data.errors.length === 0) {
+        const content: string = JSON.parse(response.config.data).document
+        return actions.postArticle(content)
+      } else {
+        // error fulfilled
+      }
+    })
+}
+
 const postArticleEpic = (action$, _store, { postArticle } = api) => {
   return action$.ofType("POST_ARTICLE")
     .mergeMap(action$ =>
@@ -41,5 +56,6 @@ const updateArticleContent = (action$, _store, { patchArticle } = api) => {
 export const articleEpics = combineEpics(
   postArticleEpic,
   fetchArticleEpic,
-  updateArticleContent
+  updateArticleContent,
+  validateArticleEpic
 )

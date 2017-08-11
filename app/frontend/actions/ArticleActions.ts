@@ -49,9 +49,22 @@ export const fullfilledArticle = (article: ArticleEntity): FullfilledArticle => 
   }
 )
 
+interface ValidateArticle {
+  type: ArticleActionType
+  payload: ArticleEntity
+}
+
+export const validateArticle = (content: string): ValidateArticle => (
+  {
+    type: "VALIDATE_ARTICLE",
+    payload: { content }
+  }
+)
+
 export default {
   changeArticleContent,
   postArticle,
   fetchArticle,
-  fullfilledArticle
+  fullfilledArticle,
+  validateArticle
 }
