@@ -3,10 +3,12 @@ import { composeWithDevTools } from "redux-devtools-extension"
 import { epicMiddleware } from "middlewares/epic"
 import { articleReducer } from "reducers/articleReducer"
 import { commentReducer } from "reducers/commentReducer"
+import { articleErrorReducer } from "reducers/articleErrorReducer"
 
 const ronbunReducers = combineReducers({
   article: articleReducer,
-  comments: commentReducer
+  comments: commentReducer,
+  articleErrors: articleErrorReducer
 })
 
 export const configureStore = () => {

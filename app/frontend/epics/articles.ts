@@ -7,7 +7,7 @@ import "rxjs/add/operator/map"
 import "rxjs/add/operator/debounceTime"
 import "rxjs/add/operator/distinctUntilChanged"
 import * as actions from "actions/ArticleActions"
-import { articleSubscriptions } from "websocket-utils/cable/subscriptions/article"
+import { fullfilledArticleError } from "actions/ArticleErrorActions"
 
 import "rxjs/add/operator/do"
 import "rxjs/add/operator/ignoreElements"
@@ -18,11 +18,12 @@ const validateArticleEpic = (action$, _store, { validateArticle } = api) => {
       validateArticle(action$.payload.content)
     )
     .map(response => {
-      if (response.data.errors.length === 0) {
+      const errors: Array<any> = response.data.errors
+      if (errors.length === 0) {
         const content: string = JSON.parse(response.config.data).document
         return actions.postArticle(content)
       } else {
-        // error fulfilled
+        return fullfilledArticleError(errors)
       }
     })
 }
