@@ -16,6 +16,8 @@
     "humps": "^2.0.1",
     "js-yaml": "^3.9.1",
     "lodash": "^4.17.4",
+    "material-ui": "next",
+    "material-ui-icons": "^1.0.0-alpha.19",
     "path-complete-extname": "^0.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
