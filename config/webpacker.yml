@@ -15,6 +15,7 @@ default: &default
     - .gif
     - .jpeg
     - .jpg
+    - .css
 
 development:
   <<: *default
