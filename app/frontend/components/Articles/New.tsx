@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Redirect } from "react-router-dom"
 import { ValidateErrors } from "components/Articles/ValidateErrors"
-import styles from "./New.css"
 
 export class NewArticle extends React.Component<any, any> {
   componentWillReceiveProps(nextProps) {
@@ -22,9 +21,6 @@ export class NewArticle extends React.Component<any, any> {
   render () {
     return (
       <div>
-        <div className={ styles.test }>
-          hoge
-        </div>
         <ValidateErrors { ...this.props } />
         <textarea
           value={ this.state.content }
