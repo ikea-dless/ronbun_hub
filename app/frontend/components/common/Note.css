@@ -1,0 +1,9 @@
+.note {
+  width: 100%;
+  border: none;
+  position: relative;
+  background-color: #ffffe7;
+  background-image: linear-gradient(rgba(241,207,164,0.5) .1em, transparent .1em);
+  background-size: 100% 1.5em;
+  line-height: 1.5em;
+}

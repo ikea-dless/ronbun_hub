@@ -1,13 +1,13 @@
 import * as React from "react"
 import { Redirect } from "react-router-dom"
 import { ValidateErrors } from "components/Articles/ValidateErrors"
+import { Note } from "components/common/Note"
+import Button from "material-ui/Button"
 
 export class NewArticle extends React.Component<any, any> {
   componentWillReceiveProps(nextProps) {
-    if (nextProps.id != undefined) {
-      // idがpropsとして取得できれば、DBにレコードが保存されているとみなす
-      this.setState({ isCreated: true })
-    }
+    // epicでセットしたnextLocationが存在すれば、POSTは成功したということなので、isCreatedをtrueにセットする
+    if (nextProps.nextLocation !== undefined) this.setState({ isCreated: true })
   }
 
   constructor (props) {
@@ -19,17 +19,16 @@ export class NewArticle extends React.Component<any, any> {
   }
 
   render () {
+    // レコードが作成されていれば、そのレコードの詳細にリダイレクト
+    if (this.state.isCreated) return <Redirect to={ this.props.nextLocation } />
     return (
       <div>
         <ValidateErrors { ...this.props } />
-        <textarea
-          value={ this.state.content }
+        <Note
+          content={ this.state.content }
           onChange={ this.updateLocalContent }
         />
-        <input type="submit" value="作成" onClick={ this.validateLocalContent } />
-
-        { /* レコードが作成されていれば、そのレコードの詳細にリダイレクト */}
-        { this.state.isCreated ? <Redirect to={ `/articles/${this.props.id}` } /> : null }
+        <Button raised color="primary" onClick={ this.validateLocalContent }>送信する</Button>
       </div>
     )
   }

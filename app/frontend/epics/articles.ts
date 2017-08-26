@@ -31,8 +31,13 @@ const validateArticleEpic = (action$, _store, { validateArticle } = api) => {
 const postArticleEpic = (action$, _store, { postArticle } = api) => {
   return action$.ofType("POST_ARTICLE")
     .mergeMap(action$ =>
-      postArticle(action$.payload)
+      postArticle(action$.payload),
     )
+    .map((article) => {
+      // payloadにlocationを追加している
+      article.data.nextLocation = `/articles/${article.data.id}`
+      return article
+    })
     .map((article) => actions.fullfilledArticle(article.data))
 }
 

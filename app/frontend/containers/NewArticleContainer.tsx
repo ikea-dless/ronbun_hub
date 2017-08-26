@@ -5,13 +5,14 @@ import { ArticleEntity } from "constants/StateTypes/article"
 import { validateArticle } from "actions/ArticleActions"
 import { NewArticle } from "components/Articles/New"
 
-const mapStateToProps: any = (state: any) => (
-  {
+const mapStateToProps: any = (state: any) => {
+  return {
     content: state.article.content,
     id: state.article.id,
-    errors: state.articleErrors
+    errors: state.articleErrors,
+    nextLocation: state.article.nextLocation
   }
-)
+}
 
 const mapDispatchToProps = (dispatch: any, { content: any }) => (
   {
