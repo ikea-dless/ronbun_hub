@@ -32,9 +32,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-router-dom@4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.0.5.tgz#638f89ca9053a0f3937d1604f2ed63dac6172ece"
+"@types/react-router-dom@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.0.7.tgz#65b192f7a5dbd1c05a8d04cc5863c9775705a435"
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
