@@ -6,20 +6,9 @@
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@types/actioncable/-/actioncable-0.0.2.tgz#a1b2faa384438315dd33f210f188f623c2c8900c"
 
-"@types/cheerio@*":
-  version "0.22.2"
-  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.2.tgz#539625874bc856086ad491c2fdc9b10c05ae308e"
-
 "@types/css-modules@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/css-modules/-/css-modules-1.0.0.tgz#effcbc81d169df021b19d9be92eb14a118613ef0"
-
-"@types/enzyme@^2.8.6":
-  version "2.8.6"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-2.8.6.tgz#b508da0860b4fcda2ab851d600e5bfaf695775dd"
-  dependencies:
-    "@types/cheerio" "*"
-    "@types/react" "*"
 
 "@types/history@*":
   version "4.6.0"
