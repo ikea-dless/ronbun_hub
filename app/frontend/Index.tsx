@@ -6,8 +6,7 @@ import { configureStore } from "store"
 import { BrowserRouter } from "react-router-dom"
 import { MainRouting } from "App"
 
-
-docReady(() => {
+export const start = docReady(() => {
   ReactDOM.render(
     <Provider store={ configureStore() } >
       <BrowserRouter basename="/client">

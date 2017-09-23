@@ -18,7 +18,8 @@ export const patchArticle = (id: string, content: string) => (
   api.patch(articles(id), { article: { content } })
 )
 
-const redpenHost = "https://ronbun-hub-redpen.herokuapp.com"
+// const redpenHost = "https://ronbun-hub-redpen.herokuapp.com"
+const redpenHost = "http://localhost:8000"
 
 export const validateArticle = (content: string) => {
   const raw = requestBody(content)
