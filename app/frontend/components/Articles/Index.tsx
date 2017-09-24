@@ -2,6 +2,8 @@ import * as React from "react"
 import { ArticleEntity } from "constants/StateTypes/article"
 import { articleSubscriptions } from "websocket-utils/cable/subscriptions/article"
 
+import { TextEditor } from "components/common/textEditor"
+
 interface PropsType extends ArticleEntity {
   actions: { [key: string]: Function }
 }
@@ -16,10 +18,11 @@ export class Article extends React.PureComponent<any, any> {
   render () {
     return (
       <div>
-        <textarea
+        {/* <textarea
           value={ this.props.content }
           onChange={ (e) => this.props.actions.changeArticleContent(this.props.articleId, e.target.value) }
-        />
+        /> */}
+        <TextEditor content={ this.props.content } />
       </div>
     )
   }
