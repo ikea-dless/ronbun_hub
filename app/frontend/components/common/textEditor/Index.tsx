@@ -1,10 +1,11 @@
 import * as React from "react"
-import { EditorState, RichUtils } from "draft-js"
+import { EditorState } from "draft-js"
 import Editor from "draft-js-plugins-editor"
 import styles from "./Index.css"
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin"
 import { BoldButton, ItalicButton, UnderlineButton } from "draft-js-buttons"
 import { HighlightButton, customHighlightColorMap } from "./HighlightButton"
+import createUndoPlugin from "draft-js-undo-plugin"
 
 const inlineToolbarPlugins = createInlineToolbarPlugin({
   structure: [
@@ -15,6 +16,9 @@ const inlineToolbarPlugins = createInlineToolbarPlugin({
   ]
 })
 const { InlineToolbar } = inlineToolbarPlugins
+
+const undoPlugin = createUndoPlugin()
+const { UndoButton, RedoButton } = undoPlugin
 
 interface PropsType {
   content: string
@@ -35,14 +39,20 @@ export class TextEditor extends React.Component<PropsType> {
 
   render() {
     return (
-      <div className={ styles.editor } onClick={ this.focus }>
-        <Editor { ...this.state }
-          customStyleMap={ customHighlightColorMap }
-          onChange={ this.onChange }
-          plugins={ [inlineToolbarPlugins] }
-          ref={ (element: HTMLElement) => { this.editor = element } }
-        />
-        <InlineToolbar />
+      <div>
+        <div className={ styles.editor } onClick={ this.focus }>
+          <Editor { ...this.state }
+            customStyleMap={ customHighlightColorMap }
+            onChange={ this.onChange }
+            plugins={ [inlineToolbarPlugins, undoPlugin] }
+            ref={ (element: HTMLElement) => { this.editor = element } }
+          />
+          <InlineToolbar />
+        </div>
+        <div className={ styles.options }>
+          <UndoButton />
+          <RedoButton />
+        </div>
       </div>
     )
   }

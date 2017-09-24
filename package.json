@@ -38,6 +38,7 @@
     "draft-js-buttons": "^2.0.0-rc8",
     "draft-js-inline-toolbar-plugin": "^2.0.0-rc8",
     "draft-js-plugins-editor": "2.0.0-rc8",
+    "draft-js-undo-plugin": "^2.0.0-rc8",
     "postcss-discard-comments": "^2.0.4",
     "redux-devtools-extension": "^2.13.2",
     "ts-loader": "^2.3.4",

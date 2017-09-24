@@ -1783,6 +1783,15 @@ draft-js-plugins-editor@2.0.0-rc8:
     prop-types "^15.5.8"
     union-class-names "^1.0.0"
 
+draft-js-undo-plugin@^2.0.0-rc8:
+  version "2.0.0-rc8"
+  resolved "https://registry.yarnpkg.com/draft-js-undo-plugin/-/draft-js-undo-plugin-2.0.0-rc8.tgz#2b212085167046c0428e2dbe7f33e3e13fdbcbfd"
+  dependencies:
+    decorate-component-with-props "^1.0.2"
+    immutable "~3.7.4"
+    prop-types "^15.5.8"
+    union-class-names "^1.0.0"
+
 draft-js@^0.10.2:
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/draft-js/-/draft-js-0.10.2.tgz#b722613cb306cfee910f9de1789f2cc3023772e7"
