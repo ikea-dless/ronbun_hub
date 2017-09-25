@@ -2,17 +2,9 @@ import * as React from "react"
 import { EditorState } from "draft-js"
 import Editor from "draft-js-plugins-editor"
 import styles from "./Index.css"
-import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin"
-import { HighlightButton, customHighlightColorMap } from "./HighlightButton"
-import createUndoPlugin from "draft-js-undo-plugin"
-
-const inlineToolbarPlugins = createInlineToolbarPlugin({
-  structure: [HighlightButton]
-})
-const { InlineToolbar } = inlineToolbarPlugins
-
-const undoPlugin = createUndoPlugin()
-const { UndoButton, RedoButton } = undoPlugin
+import { customHighlightColorMap } from "./HighlightButton"
+import { InlineToolbar, inlineToolbarPlugins } from "./inlineToolbar"
+import { UndoButton, RedoButton, undoPlugin } from "./undoButton"
 
 interface PropsType {
   content: string
