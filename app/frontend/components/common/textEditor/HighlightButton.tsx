@@ -1,5 +1,6 @@
 import * as React from "react"
 import { RichUtils } from "draft-js"
+import { BrushIcon } from "components/common/icon/BrushIcon"
 
 export const customHighlightColorMap = {
   highLight: {
@@ -25,7 +26,9 @@ export class HighlightButton extends React.Component<any> {
     const className = this.styleIsActive() ? `${theme.button} ${theme.active}` : theme.button
     return (
       <div className={ theme.buttonWrapper } onMouseDown={ (evt) => { evt.preventDefault() } }>
-        <button className={ className } onClick={ (evt) => { this.toggleStyle(evt) } }>H</button>
+        <button className={ className } onClick={ (evt) => { this.toggleStyle(evt) } }>
+          <BrushIcon />
+        </button>
       </div>
     )
   }

@@ -3,17 +3,11 @@ import { EditorState } from "draft-js"
 import Editor from "draft-js-plugins-editor"
 import styles from "./Index.css"
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin"
-import { BoldButton, ItalicButton, UnderlineButton } from "draft-js-buttons"
 import { HighlightButton, customHighlightColorMap } from "./HighlightButton"
 import createUndoPlugin from "draft-js-undo-plugin"
 
 const inlineToolbarPlugins = createInlineToolbarPlugin({
-  structure: [
-    BoldButton,
-    ItalicButton,
-    UnderlineButton,
-    HighlightButton
-  ]
+  structure: [HighlightButton]
 })
 const { InlineToolbar } = inlineToolbarPlugins
 
