@@ -7,6 +7,7 @@ class OauthsController < ApplicationController
     login_at(auth_params[:provider])
   end
 
+  # rubocop:disable Lint/RescueWithoutErrorClass
   def callback
     provider = params[:provider]
     if (@user = login_from(provider))

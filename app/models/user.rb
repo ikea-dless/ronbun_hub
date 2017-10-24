@@ -6,5 +6,5 @@ class User < ApplicationRecord
   end
 
   has_many :authentications, dependent: :destroy
-  has_many :articles
+  has_many :articles, dependent: :restrict_with_exception
 end
