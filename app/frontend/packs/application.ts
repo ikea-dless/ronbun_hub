@@ -1,3 +1,4 @@
-import { start } from "../Index"
+import docReady from "doc-ready"
+import { startApp } from "../Index"
 
-start()
+docReady(startApp)
