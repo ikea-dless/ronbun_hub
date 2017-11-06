@@ -5,22 +5,16 @@ import { Note } from "components/common/Note"
 import Button from "material-ui/Button"
 
 export class NewArticle extends React.Component<any, any> {
-  componentWillReceiveProps(nextProps) {
-    // epicでセットしたnextLocationが存在すれば、POSTは成功したということなので、isCreatedをtrueにセットする
-    if (nextProps.nextLocation !== undefined) this.setState({ isCreated: true })
-  }
-
   constructor (props) {
     super(props)
     this.state = {
-      content: this.props.content,
-      isCreated: false
+      content: this.props.content
     }
   }
 
   render () {
     // レコードが作成されていれば、そのレコードの詳細にリダイレクト
-    if (this.state.isCreated) return <Redirect to={ this.props.nextLocation } />
+    if (this.isCreated()) return <Redirect to={ this.props.nextLocation } />
     return (
       <div>
         <ValidateErrors { ...this.props } />
@@ -40,4 +34,8 @@ export class NewArticle extends React.Component<any, any> {
   private validateLocalContent = (): void => {
     this.props.actions.validateArticle(this.state.content)
   }
+
+  private isCreated = () => (
+    this.props.nextLocation !== undefined
+  )
 }
