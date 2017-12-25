@@ -3,14 +3,14 @@ import * as React from "react"
 interface PropsType {
   content: string
   onChange: Function
+  onSelectionChange: Function
 }
 
 export class SimpleEditor extends React.Component<PropsType> {
   textarea: HTMLTextAreaElement
 
   state = {
-    history: [],
-    selection: null  // TODO: global state
+    history: []
   }
 
   componentDidMount() {
@@ -22,7 +22,8 @@ export class SimpleEditor extends React.Component<PropsType> {
 
   onSelectionChange = () => {
     const selectionString = window.getSelection().toString()
-    this.setState({ selection: selectionString })
+    // this.setState({ selection: selectionString })
+    this.props.onSelectionChange(selectionString)
   }
 
   onChange = (newContent: string) => {

@@ -21,6 +21,7 @@ export class Article extends React.PureComponent<any, any> {
       <SimpleEditor
         content={ this.props.content }
         onChange={ (content) => { this.props.actions.changeArticleContent(this.props.articleId, content) } }
+        onSelectionChange={ (selection: string) => { this.props.actions.changeArticleSelection(selection) } }
       />
       // <TextEditor
       //   contentState={ this.props.contentState }

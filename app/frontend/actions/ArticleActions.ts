@@ -1,6 +1,6 @@
 import { ArticleActionType } from "constants/ActionTypes/article"
 import { ArticleEntity } from "constants/StateTypes/article"
-// import { RawDraftContentState, ContentState } from "draft-js"
+import { Article } from "components/Articles";
 
 interface ChangeArticleContent {
   type: ArticleActionType
@@ -62,10 +62,23 @@ export const validateArticle = (content: string): ValidateArticle => (
   }
 )
 
+interface ChangeArticleSelection {
+  type: ArticleActionType
+  payload: { selection: string }
+}
+
+export const changeArticleSelection = (selection: string): ChangeArticleSelection => (
+  {
+    type: "CHANGE_ARTICLE_SELECTION",
+    payload: { selection }
+  }
+)
+
 export default {
   changeArticleContent,
   postArticle,
   fetchArticle,
   fullfilledArticle,
-  validateArticle
+  validateArticle,
+  changeArticleSelection
 }

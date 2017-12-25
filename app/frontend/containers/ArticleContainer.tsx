@@ -10,12 +10,14 @@ import { ContentState } from "draft-js"
 interface StateProps {
   content: string
   articleId: string
+  selection: string
 }
 
 const mapStateToProps = (state, ownProps): StateProps => {
   const content = state.article.content
+  const selection = state.article.selection
   const articleId: string = ownProps.match.params.id
-  return { content, articleId }
+  return { content, articleId, selection }
 }
 
 interface DispatchType {

@@ -20,6 +20,10 @@ export const articleReducer = (state: ArticleEntity = initialState, { type, payl
       const newState = { content: payload.content }
       return { ...state, ...newState }
     }
+    case "CHANGE_ARTICLE_SELECTION": {
+      const newState = { selection: payload.selection }
+      return { ...state, ...newState }
+    }
     case "FULLFILLED_ARTICLE": {
       return { ...state, ...payload }
     }
