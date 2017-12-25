@@ -17,7 +17,7 @@ export const articleReducer = (state: ArticleEntity = initialState, { type, payl
       return { ...state, ...newState }
     }
     case "FETCH_ARTICLE": {
-      const newState = { content: payload.contnt }
+      const newState = { content: payload.content }
       return { ...state, ...newState }
     }
     case "FULLFILLED_ARTICLE": {

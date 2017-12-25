@@ -6,9 +6,9 @@ const api: Axios.AxiosInstance = create()
 
 const articles = (articleId = "") => `/api/articles/${articleId}`
 
-export const postArticle = (newArticle) => (
-  api.post(articles(), newArticle)
-)
+export const postArticle = (content: string) => {
+  return api.post(articles(), { article: { content } })
+}
 
 export const fetchArticle = (articleId: string) => (
   api.get(articles(articleId))

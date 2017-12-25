@@ -1,9 +1,10 @@
 import { ArticleActionType } from "constants/ActionTypes/article"
 import { ArticleEntity } from "constants/StateTypes/article"
+// import { RawDraftContentState, ContentState } from "draft-js"
 
 interface ChangeArticleContent {
   type: ArticleActionType
-  payload: ArticleEntity
+  payload: { id: string, content: string }
 }
 
 export const changeArticleContent = (id: string, content: string): ChangeArticleContent => (

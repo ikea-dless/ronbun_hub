@@ -5,6 +5,7 @@ import { Article } from "components/Articles"
 import { ArticleEntity } from "constants/StateTypes/article"
 import ArticleActions from "actions/ArticleActions"
 import { CommentContainer } from "containers/CommentContainer"
+import { ContentState } from "draft-js"
 
 interface StateProps {
   content: string
@@ -12,7 +13,7 @@ interface StateProps {
 }
 
 const mapStateToProps = (state, ownProps): StateProps => {
-  const content: string = state.article.content
+  const content = state.article.content
   const articleId: string = ownProps.match.params.id
   return { content, articleId }
 }

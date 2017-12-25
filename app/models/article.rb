@@ -5,7 +5,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
 
-  validates :content, presence: true
+  validates :content, presence: true, allow_blank: true
 
   private
 

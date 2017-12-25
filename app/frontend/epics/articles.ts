@@ -6,6 +6,7 @@ import "rxjs/add/operator/switchMap"
 import "rxjs/add/operator/map"
 import "rxjs/add/operator/debounceTime"
 import "rxjs/add/operator/distinctUntilChanged"
+import "rxjs/add/operator/catch"
 import * as actions from "actions/ArticleActions"
 import { fullfilledArticleError } from "actions/ArticleErrorActions"
 
@@ -30,9 +31,9 @@ const validateArticleEpic = (action$, _store, { validateArticle } = api) => {
 
 const postArticleEpic = (action$, _store, { postArticle } = api) => {
   return action$.ofType("POST_ARTICLE")
-    .mergeMap(action$ =>
-      postArticle(action$.payload),
-    )
+    .mergeMap(action$ => {
+      return postArticle(action$.payload.content)
+    })
     .map((article) => {
       // payloadにlocationを追加している
       article.data.nextLocation = `/articles/${article.data.id}`
@@ -46,17 +47,24 @@ const fetchArticleEpic = (action$, _store, { fetchArticle } = api) => {
     .mergeMap(action$ =>
       fetchArticle(action$.payload.id)
     )
-    .map((article) => actions.fullfilledArticle(article.data))
+    .map((article) => {
+      return actions.fullfilledArticle(article.data)
+    })
 }
 
 const updateArticleContent = (action$, _store, { patchArticle } = api) => {
   return action$.ofType("CHANGE_ARTICLE_CONTENT")
     .debounceTime(500)
     .distinctUntilChanged((p, n) => p.payload.content === n.payload.content)
-    .mergeMap(action$ =>
-      patchArticle(action$.payload.id, action$.payload.content)
-    )
-    .map((article) => actions.fullfilledArticle(article.data))
+    .mergeMap(action$ => {
+      return patchArticle(action$.payload.id, action$.payload.content)
+    })
+    .map((article) => {
+      return actions.fullfilledArticle(article.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
 }
 
 export const articleEpics = combineEpics(
