@@ -8,6 +8,7 @@ interface PropTypes {
   comments: CommentEntity[]
   // actions: { [key: number]: Function }
   actions: any
+  articleSelection?: string
 }
 
 export const Comments: React.SFC<PropTypes> = (props) => (
@@ -17,6 +18,9 @@ export const Comments: React.SFC<PropTypes> = (props) => (
         <textarea defaultValue={ comment.body } />
       </div>
     ))}
-    <button onClick={ () => props.actions.addComment(uuid(), 1) }>コメント追加</button>
+    <button onClick={ () => props.actions.addComment(uuid(), 1) }>
+      { props.articleSelection ? `${ props.articleSelection }について` : null }
+      コメント追加
+    </button>
   </div>
 )

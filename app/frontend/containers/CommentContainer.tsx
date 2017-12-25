@@ -7,11 +7,15 @@ import { Comments } from "components/Comments"
 
 interface StateToPropsType {
   comments: CommentEntity[]
+  articleSelection: string
 }
 
-const mapStateToProps = (state): StateToPropsType => (
-  { comments: state.comments }
-)
+const mapStateToProps = (state, props): StateToPropsType => {
+  return {
+    comments: state.comments,
+    articleSelection: props.selection
+  }
+}
 
 interface DispatchToPropsType {
   actions: { [key: number]: Function }
