@@ -12,7 +12,6 @@ const postCommentEpic = (action$, _store, { postComment } = api) => {
       return postComment(action$.payload.articleId, action$.payload.body)
     })
     .map((comment) => {
-      console.log(comment.data)
       return actions.fullfilledComments(comment.data)
     })
 }

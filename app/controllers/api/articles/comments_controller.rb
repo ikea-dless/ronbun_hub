@@ -7,7 +7,8 @@ class Api::Articles::CommentsController < Api::ApplicationController
     comment = @article.comments.build(comment_params)
     comment.user = current_user
     comment.save!
-    render json: @article.comments
+    # render json: @article.comments
+    head :ok
   end
 
   private

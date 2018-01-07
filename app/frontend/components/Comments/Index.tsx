@@ -1,6 +1,7 @@
 import * as React from "react"
 import { values } from "lodash"
 import { CommentEntity } from "constants/StateTypes/comments"
+import { articleCommentSubscriptions } from "websocket-utils/cable/subscriptions/comment"
 
 // TODO: 型付け
 interface PropTypes {
@@ -8,27 +9,33 @@ interface PropTypes {
   // actions: { [key: number]: Function }
   actions: any
   articleSelection?: string
-  articleId: number
+  articleId: string
 }
 
-export const Comments: React.SFC<PropTypes> = (props) => (
-  <div>
-    { values(props.comments).map((comment: CommentEntity, index) => (
-      <div key={ index }>
-        <textarea defaultValue={ comment.body } />
+
+
+export class Comments extends React.PureComponent<PropTypes> {
+  componentWillMount() {
+    articleCommentSubscriptions(this.props.articleId, this.props.actions)
+  }
+
+  render() {
+    return (
+      <div>
+        { values(this.props.comments).map((comment: CommentEntity, index) => (
+          <div key={ index }>
+            <textarea defaultValue={ comment.body } />
+          </div>
+        ))}
+        <NewComment
+          articleSelection={ this.props.articleSelection }
+          addComment={ this.props.actions.addComment }
+          articleId={ this.props.articleId }
+        />
       </div>
-    ))}
-    {/* <button onClick={ () => props.actions.addComment(uuid(), props.articleId) }>
-      { props.articleSelection ? `${ props.articleSelection }について` : null }
-      コメント追加
-    </button> */}
-    <NewComment
-      articleSelection={ props.articleSelection }
-      addComment={ props.actions.addComment }
-      articleId={ props.articleId }
-    />
-  </div>
-)
+    )
+  }
+}
 
 class NewComment extends React.PureComponent<{ articleSelection: string, addComment: Function, articleId: number | string }> {
   state = {
