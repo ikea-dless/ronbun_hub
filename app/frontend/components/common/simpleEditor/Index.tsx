@@ -1,4 +1,5 @@
 import * as React from "react"
+import styles from "./Index.css"
 
 interface PropsType {
   content: string
@@ -34,6 +35,9 @@ export class SimpleEditor extends React.Component<PropsType> {
     return (
       <div>
         <textarea
+          className={ styles.editor }
+          cols={ 100 }
+          rows={ 50 }
           // ref={ (elm) => { this.textarea = elm }}
           value={ this.props.content }
           onChange={ (e) => { this.onChange(e.target.value) } }

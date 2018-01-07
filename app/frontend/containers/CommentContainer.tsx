@@ -8,12 +8,14 @@ import { Comments } from "components/Comments"
 interface StateToPropsType {
   comments: CommentEntity[]
   articleSelection: string
+  articleId: number
 }
 
 const mapStateToProps = (state, props): StateToPropsType => {
   return {
     comments: state.comments,
-    articleSelection: props.selection
+    articleSelection: props.selection,
+    articleId: props.articleId
   }
 }
 

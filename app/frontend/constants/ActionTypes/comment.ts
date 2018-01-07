@@ -1,1 +1,1 @@
-export type CommentActionType = "ADD_COMMENT"
+export type CommentActionType = "POST_COMMENT" | "FULLFILLED_COMMENTS"

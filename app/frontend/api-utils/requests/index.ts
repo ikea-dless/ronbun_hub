@@ -27,3 +27,9 @@ export const validateArticle = (content: string) => {
     headers: { "Content-Type": "application/json" }
   })
 }
+
+const comments = (articleId: string) => `/api/articles/${articleId}/comments`
+
+export const postComment = (articleId: string, body: string) => {
+  return api.post(comments(articleId), { comment: { body } })
+}

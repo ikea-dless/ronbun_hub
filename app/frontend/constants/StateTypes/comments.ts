@@ -1,5 +1,4 @@
 export interface CommentEntity {
-  id: number | string
   body?: string
   articleId: number
 }
