@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Comment < ApplicationRecord
   after_create_commit :broadcast
 
@@ -9,6 +11,6 @@ class Comment < ApplicationRecord
   private
 
   def broadcast
-    ActionCable.server.broadcast("article_#{article_id}_comment", Comment.where(article: self.article))
+    ActionCable.server.broadcast("article_#{article_id}_comment", Comment.where(article: article))
   end
 end

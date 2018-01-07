@@ -4,7 +4,7 @@ class Article < ApplicationRecord
   after_update_commit :broadcast
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :content, presence: true, allow_blank: true
 
