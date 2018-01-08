@@ -7,10 +7,10 @@ interface AddComment {
   payload: CommentEntity
 }
 
-export const addComment = (articleId: number, body: string): AddComment => (
+export const addComment = (articleId: number, body: string, target: string): AddComment => (
   {
     type: "POST_COMMENT",
-    payload: { articleId, body }
+    payload: { articleId, body, target }
   }
 )
 

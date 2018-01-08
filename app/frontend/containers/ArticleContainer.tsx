@@ -6,6 +6,7 @@ import { ArticleEntity } from "constants/StateTypes/article"
 import ArticleActions from "actions/ArticleActions"
 import { CommentContainer } from "containers/CommentContainer"
 import { ContentState } from "draft-js"
+import { addComment } from "actions/CommentActions"
 
 interface StateProps {
   content: string
@@ -22,10 +23,14 @@ const mapStateToProps = (state, ownProps): StateProps => {
 
 interface DispatchType {
   actions: { [key: string]: Function }
+  addCommentAction: Function
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(ArticleActions, dispatch)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  actions: bindActionCreators(ArticleActions, dispatch),
+  addCommentAction: (body: string, target: string) => dispatch(
+    addComment(ownProps.match.params.id, body, target)
+  )
 })
 
 type PropsType = DispatchType & ArticleEntity

@@ -30,8 +30,8 @@ export const validateArticle = (content: string) => {
 
 const comments = (articleId: string) => `/api/articles/${articleId}/comments`
 
-export const postComment = (articleId: string, body: string) => {
-  return api.post(comments(articleId), { comment: { body } })
+export const postComment = (articleId: string, body: string, target: string | null) => {
+  return api.post(comments(articleId), { comment: { body, target } })
 }
 
 export const fetchComments = (articleId: string) => {

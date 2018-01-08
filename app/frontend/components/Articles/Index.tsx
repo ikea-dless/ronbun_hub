@@ -4,9 +4,11 @@ import { articleSubscriptions } from "websocket-utils/cable/subscriptions/articl
 
 // import { TextEditor } from "components/common/textEditor"
 import { SimpleEditor } from "components/common/simpleEditor"
+import { addComment } from "actions/CommentActions" // TODO: 悪手
 
 interface PropsType extends ArticleEntity {
   actions: { [key: string]: Function }
+  addCommentAction: Function
 }
 
 // TODO: 型付け
@@ -22,6 +24,7 @@ export class Article extends React.PureComponent<any, any> {
         content={ this.props.content }
         onChange={ (content) => { this.props.actions.changeArticleContent(this.props.articleId, content) } }
         onSelectionChange={ (selection: string) => { this.props.actions.changeArticleSelection(selection) } }
+        addComment={ this.props.addCommentAction }
       />
       // <TextEditor
       //   contentState={ this.props.contentState }

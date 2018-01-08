@@ -9,7 +9,7 @@ import "rxjs/add/operator/ignoreElements"
 const postCommentEpic = (action$, _store, { postComment } = api) => {
   return action$.ofType("POST_COMMENT")
     .mergeMap((action$) => {
-      return postComment(action$.payload.articleId, action$.payload.body)
+      return postComment(action$.payload.articleId, action$.payload.body, action$.payload.target)
     })
     .map((comment) => {
       return actions.fullfilledComments(comment.data)

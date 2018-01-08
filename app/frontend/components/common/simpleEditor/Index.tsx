@@ -1,10 +1,12 @@
 import * as React from "react"
 import styles from "./Index.css"
+import { CommentTooltip } from "components/common/simpleEditor/commentTooltip"
 
 interface PropsType {
   content: string
   onChange: Function
   onSelectionChange: Function
+  addComment: Function
 }
 
 export class SimpleEditor extends React.Component<PropsType> {
@@ -12,29 +14,27 @@ export class SimpleEditor extends React.Component<PropsType> {
 
   state = {
     history: [],
-    x: null,
-    y: null,
-    staticX: null,
-    staticY: null
+    positionX: null,
+    positionY: null,
+    selectionString: null
   }
 
-  componentDidMount() {
-    // this.textarea.addEventListener("selectionchange", () => {
-    //   this.onSelectionChange()
-    // })
-    document.addEventListener("selectionchange", this.onSelectionChange)
-    document.addEventListener("mousemove", (e) => {
-      this.setState({ x: e.pageX })
-      this.setState({ y: e.pageY })
-    })
-  }
+  // onSelectionChange = (e) => {
+  //   const selectionString = window.getSelection().toString()
+  //   this.setState({ selectionString })
+  //   this.props.onSelectionChange(selectionString)
+  // }
 
-  onSelectionChange = (e) => {
+  setMousePosition = (e) => {
+    this.setState({ positionX: e.pageX })
+    this.setState({ positionY: e.pageY })
+    // mouseUpイベントだと直前のselectionも取得してしまうので暫定処理
     const selectionString = window.getSelection().toString()
-    // this.setState({ selection: selectionString })
-    this.setState({ staticX: this.state.x })
-    this.setState({ staticY: this.state.y })
-    this.props.onSelectionChange(selectionString)
+    if (this.state.selectionString === selectionString) {
+      this.setState({ selectionString: null })
+    } else {
+      this.setState({ selectionString })
+    }
   }
 
   onChange = (newContent: string) => {
@@ -51,13 +51,14 @@ export class SimpleEditor extends React.Component<PropsType> {
           // ref={ (elm) => { this.textarea = elm }}
           value={ this.props.content }
           onChange={ (e) => { this.onChange(e.target.value) } }
+          onMouseUp={ this.setMousePosition }
         />
-        <div
-          className={ styles.toolbar }
-          style={ { left: this.state.staticX, top: this.state.staticY } }
-        >
-          hoge
-        </div>
+        <CommentTooltip
+          positionY={ this.state.positionY }
+          positionX={ this.state.positionX }
+          target={ this.state.selectionString }
+          addCommentF={ this.props.addComment }
+        />
       </div>
     )
   }

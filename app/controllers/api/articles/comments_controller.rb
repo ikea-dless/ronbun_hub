@@ -18,7 +18,7 @@ class Api::Articles::CommentsController < Api::ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :target)
   end
 
   def set_article

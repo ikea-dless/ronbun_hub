@@ -25,6 +25,7 @@ export class Comments extends React.PureComponent<PropTypes> {
       <div>
         { values(this.props.comments).map((comment: CommentEntity, index) => (
           <div key={ index }>
+            <p>{ comment.target ? `「${ comment.target }」についてのコメント` : null }</p>
             <p>{ comment.body }</p>
           </div>
         ))}

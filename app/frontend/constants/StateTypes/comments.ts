@@ -1,6 +1,7 @@
 export interface CommentEntity {
-  body?: string
+  body: string
   articleId: number
+  target?: string
 }
 
 export interface CommentsEntity {
