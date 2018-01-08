@@ -26,7 +26,20 @@ export const fullfilledComments = (comments: CommentsEntity): FullfilledComments
   }
 )
 
+interface FetchComments {
+  type: CommentActionType
+  payload: { articleId: string }
+}
+
+export const fetchComments = (articleId: string) => (
+  {
+    type: "FETCH_COMMENTS",
+    payload: { articleId }
+  }
+)
+
 export default {
   addComment,
-  fullfilledComments
+  fullfilledComments,
+  fetchComments
 }

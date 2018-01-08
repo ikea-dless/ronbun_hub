@@ -16,6 +16,17 @@ const postCommentEpic = (action$, _store, { postComment } = api) => {
     })
 }
 
+const fetchCommentsEpic = (action$, _store, { fetchComments } = api) => {
+  return action$.ofType("FETCH_COMMENTS")
+    .mergeMap((action$) => {
+      return fetchComments(action$.payload.articleId)
+    })
+    .map((comment) => {
+      return actions.fullfilledComments(comment.data)
+    })
+}
+
 export const commentEpics = combineEpics(
-  postCommentEpic
+  postCommentEpic,
+  fetchCommentsEpic
 )

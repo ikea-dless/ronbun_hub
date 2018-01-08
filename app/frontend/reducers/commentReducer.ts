@@ -17,6 +17,10 @@ export const commentReducer = (state: CommentsEntity = initialState, { type, pay
     case "FULLFILLED_COMMENTS": {
       return { ...state, ...payload }
     }
+    case "FETCH_COMMENTS": {
+      // return { ...state, ...payload }
+      return { ...state }
+    }
     default:
       return state
   }

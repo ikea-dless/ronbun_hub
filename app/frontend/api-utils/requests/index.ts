@@ -33,3 +33,7 @@ const comments = (articleId: string) => `/api/articles/${articleId}/comments`
 export const postComment = (articleId: string, body: string) => {
   return api.post(comments(articleId), { comment: { body } })
 }
+
+export const fetchComments = (articleId: string) => {
+  return api.get(comments(articleId))
+}

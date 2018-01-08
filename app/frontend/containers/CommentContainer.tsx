@@ -4,11 +4,12 @@ import { bindActionCreators } from "redux"
 import CommentActions from "actions/CommentActions"
 import { connect } from "react-redux"
 import { Comments } from "components/Comments"
+import { NewComment } from "components/Comments/NewComment"
 
 interface StateToPropsType {
   comments: CommentEntity[]
   articleSelection: string
-  articleId: number
+  articleId: string
 }
 
 const mapStateToProps = (state, props): StateToPropsType => {
@@ -29,4 +30,15 @@ const mapDispatchToProps = (dispatch) => ({
 
 type PropTypes = DispatchToPropsType & StateToPropsType
 
-export const CommentContainer = connect<StateToPropsType, DispatchToPropsType, PropTypes>(mapStateToProps, mapDispatchToProps)(Comments)
+const BaseComponent: React.SFC<PropTypes> = (props) => (
+  <div>
+    <Comments { ...props } />
+    <NewComment
+      articleSelection={ props.articleSelection }
+      actions={ props.actions }
+      articleId={ props.articleId }
+    />
+  </div>
+)
+
+export const CommentContainer = connect<StateToPropsType, DispatchToPropsType, PropTypes>(mapStateToProps, mapDispatchToProps)(BaseComponent)

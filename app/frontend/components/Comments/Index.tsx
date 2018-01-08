@@ -16,6 +16,7 @@ interface PropTypes {
 
 export class Comments extends React.PureComponent<PropTypes> {
   componentWillMount() {
+    this.props.actions.fetchComments(this.props.articleId)
     articleCommentSubscriptions(this.props.articleId, this.props.actions)
   }
 
@@ -24,42 +25,9 @@ export class Comments extends React.PureComponent<PropTypes> {
       <div>
         { values(this.props.comments).map((comment: CommentEntity, index) => (
           <div key={ index }>
-            <textarea defaultValue={ comment.body } />
+            <p>{ comment.body }</p>
           </div>
         ))}
-        <NewComment
-          articleSelection={ this.props.articleSelection }
-          addComment={ this.props.actions.addComment }
-          articleId={ this.props.articleId }
-        />
-      </div>
-    )
-  }
-}
-
-class NewComment extends React.PureComponent<{ articleSelection: string, addComment: Function, articleId: number | string }> {
-  state = {
-    body: ""
-  }
-
-  handleOnClick = () => {
-    this.setState({ body: "" })
-    this.props.addComment(this.props.articleId, this.state.body)
-  }
-
-  render() {
-    const target = this.props.articleSelection
-    return (
-      <div>
-        { target ? `${ target }についてコメントする` : null }
-        <input
-          type="text"
-          value={ this.state.body }
-          onChange={ (e) => { this.setState({ body: e.target.value }) } }
-        />
-        <button
-          onClick={ this.handleOnClick }
-        >post</button>
       </div>
     )
   }

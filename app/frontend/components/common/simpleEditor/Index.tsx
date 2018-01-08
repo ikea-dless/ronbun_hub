@@ -11,7 +11,11 @@ export class SimpleEditor extends React.Component<PropsType> {
   textarea: HTMLTextAreaElement
 
   state = {
-    history: []
+    history: [],
+    x: null,
+    y: null,
+    staticX: null,
+    staticY: null
   }
 
   componentDidMount() {
@@ -19,11 +23,17 @@ export class SimpleEditor extends React.Component<PropsType> {
     //   this.onSelectionChange()
     // })
     document.addEventListener("selectionchange", this.onSelectionChange)
+    document.addEventListener("mousemove", (e) => {
+      this.setState({ x: e.pageX })
+      this.setState({ y: e.pageY })
+    })
   }
 
-  onSelectionChange = () => {
+  onSelectionChange = (e) => {
     const selectionString = window.getSelection().toString()
     // this.setState({ selection: selectionString })
+    this.setState({ staticX: this.state.x })
+    this.setState({ staticY: this.state.y })
     this.props.onSelectionChange(selectionString)
   }
 
@@ -42,6 +52,12 @@ export class SimpleEditor extends React.Component<PropsType> {
           value={ this.props.content }
           onChange={ (e) => { this.onChange(e.target.value) } }
         />
+        <div
+          className={ styles.toolbar }
+          style={ { left: this.state.staticX, top: this.state.staticY } }
+        >
+          hoge
+        </div>
       </div>
     )
   }
