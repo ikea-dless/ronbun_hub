@@ -32,12 +32,12 @@ type PropTypes = DispatchToPropsType & StateToPropsType
 
 const BaseComponent: React.SFC<PropTypes> = (props) => (
   <div>
-    <Comments { ...props } />
     <NewComment
       articleSelection={ props.articleSelection }
       actions={ props.actions }
       articleId={ props.articleId }
     />
+    <Comments { ...props } />
   </div>
 )
 

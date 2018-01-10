@@ -33,7 +33,7 @@ export class NewComment extends React.PureComponent<PropTypes> {
           color="primary"
           onClick={ this.handleOnClick }
         >
-          post
+          コメントする
         </Button>
       </div>
     )

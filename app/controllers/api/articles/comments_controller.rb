@@ -12,7 +12,7 @@ class Api::Articles::CommentsController < Api::ApplicationController
   end
 
   def index
-    render json: @article.comments
+    render json: @article.comments.order(updated_at: :desc)
   end
 
   private

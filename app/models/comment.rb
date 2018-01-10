@@ -11,6 +11,10 @@ class Comment < ApplicationRecord
   private
 
   def broadcast
-    ActionCable.server.broadcast("article_#{article_id}_comment", Comment.where(article: article))
+    comments = Comment.where(article: article).order(updated_at: :desc).map do |c|
+      serializer = CommentSerializer.new(c)
+      serializer.to_hash
+    end
+    ActionCable.server.broadcast("article_#{article_id}_comment", comments)
   end
 end

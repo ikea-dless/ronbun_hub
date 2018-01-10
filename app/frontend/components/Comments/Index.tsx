@@ -2,6 +2,10 @@ import * as React from "react"
 import { values } from "lodash"
 import { CommentEntity } from "constants/StateTypes/comments"
 import { articleCommentSubscriptions } from "websocket-utils/cable/subscriptions/comment"
+import List, { ListItem, ListSubheader, ListItemText } from "material-ui/List"
+import Card, { CardHeader, CardContent } from "material-ui/Card"
+import Typography from "material-ui/Typography"
+import Avatar from 'material-ui/Avatar'
 
 // TODO: 型付け
 interface PropTypes {
@@ -22,14 +26,25 @@ export class Comments extends React.PureComponent<PropTypes> {
 
   render() {
     return (
-      <div>
-        { values(this.props.comments).map((comment: CommentEntity, index) => (
-          <div key={ index }>
-            <p>{ comment.target ? `「${ comment.target }」についてのコメント` : null }</p>
-            <p>{ comment.body }</p>
-          </div>
-        ))}
-      </div>
+      <List /*subheader={ <ListSubheader>コメント</ListSubheader> }*/>
+        { values(this.props.comments).map((comment: CommentEntity, index) => {
+          const targetText: string | null = comment.target ? `「${ comment.target }」についてのコメント` : null
+          return (
+            <ListItem key={ index }>
+              <Card>
+                <CardHeader
+                  title={ comment.user.username }
+                  subheader={ targetText }
+                  avatar={ <Avatar>{ comment.user.username.slice(0, 1) }</Avatar> }
+                />
+                <CardContent>
+                  <Typography component="p">{ comment.body }</Typography>
+                </CardContent>
+              </Card>
+            </ListItem>
+          )
+        })}
+      </List>
     )
   }
 }
