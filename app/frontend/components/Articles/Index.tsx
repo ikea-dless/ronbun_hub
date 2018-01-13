@@ -23,7 +23,7 @@ export const Articles: React.SFC<any> = (props) => (
         { values(props.articles).map((article, index) => (
           <TableRow key={ index }>
             <TableCell>
-              <Typography>{ article.content }</Typography>
+              <Typography>{ article.content.length > 10 ? `${ article.content.slice(0, 10) }...` : article.content }</Typography>
             </TableCell>
             <TableCell>
               {/* <Link to={ `/articles/${ article.id }` }>編集する</Link> */}
