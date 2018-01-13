@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
   namespace :api do
-    resources :articles, only: %i[show create update], module: :articles do
+    resources :articles, only: %i[show create update index], module: :articles do
       resources :comments, only: %i[create index]
     end
   end

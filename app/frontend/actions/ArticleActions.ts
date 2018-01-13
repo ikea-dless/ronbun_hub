@@ -1,6 +1,5 @@
 import { ArticleActionType } from "constants/ActionTypes/article"
-import { ArticleEntity } from "constants/StateTypes/article"
-import { Article } from "components/Articles";
+import { ArticleEntity, ArticleEntities } from "constants/StateTypes/article"
 
 interface ChangeArticleContent {
   type: ArticleActionType
@@ -74,11 +73,30 @@ export const changeArticleSelection = (selection: string): ChangeArticleSelectio
   }
 )
 
+interface FetchArticles {
+  type: ArticleActionType
+}
+
+export const fetchArticles = (): FetchArticles => (
+  {
+    type: "FETCH_ARTICLES"
+  }
+)
+
+export const fullfilledArticles = (articles: ArticleEntities) => (
+  {
+    type: "FULLFILLED_ARTICLES",
+    payload: articles
+  }
+)
+
 export default {
   changeArticleContent,
   postArticle,
   fetchArticle,
   fullfilledArticle,
   validateArticle,
-  changeArticleSelection
+  changeArticleSelection,
+  fetchArticles,
+  fullfilledArticles
 }

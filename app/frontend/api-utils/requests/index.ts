@@ -18,6 +18,10 @@ export const patchArticle = (id: string, content: string) => (
   api.patch(articles(id), { article: { content } })
 )
 
+export const fetchArticles = () => (
+  api.get(articles())
+)
+
 // const redpenHost = "https://ronbun-hub-redpen.herokuapp.com"
 const redpenHost = "http://localhost:8000"
 

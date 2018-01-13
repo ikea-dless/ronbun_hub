@@ -6,3 +6,7 @@ export interface ArticleEntity {
   createdAt?: string
   selection?: string
 }
+
+export interface ArticleEntities {
+  [key: number]: ArticleEntity
+}

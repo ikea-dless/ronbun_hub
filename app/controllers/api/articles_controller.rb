@@ -17,6 +17,10 @@ class Api::ArticlesController < Api::ApplicationController
     render json: @article
   end
 
+  def index
+    render json: current_user.articles.order(updated_at: :desc)
+  end
+
   private
 
   def article_params

@@ -69,8 +69,15 @@ const updateArticleContent = (action$, _store, { patchArticle } = api) => {
     .map((article) => {
       return actions.fullfilledArticle(article.data)
     })
-    .catch(error => {
-      console.log(error)
+}
+
+const fetchArticlesEpic = (action$, _store, { fetchArticles } = api) => {
+  return action$.ofType("FETCH_ARTICLES")
+    .mergeMap((action$) => {
+      return fetchArticles()
+    })
+    .map((response) => {
+      return actions.fullfilledArticles(response.data)
     })
 }
 
@@ -78,5 +85,6 @@ export const articleEpics = combineEpics(
   postArticleEpic,
   fetchArticleEpic,
   updateArticleContent,
-  validateArticleEpic
+  validateArticleEpic,
+  fetchArticlesEpic
 )

@@ -1,4 +1,4 @@
-import { CommentsEntity } from "constants/StateTypes/comments";
+import { CommentsEntity } from "constants/StateTypes/comments"
 
 const initialState: CommentsEntity = {}
 
