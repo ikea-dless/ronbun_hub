@@ -7,6 +7,7 @@ import ArticleActions from "actions/ArticleActions"
 import { CommentContainer } from "containers/CommentContainer"
 import { ContentState } from "draft-js"
 import { addComment } from "actions/CommentActions"
+import Grid from "material-ui/Grid"
 
 interface StateProps {
   content: string
@@ -36,9 +37,15 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 type PropsType = DispatchType & ArticleEntity
 
 const BaseComponent: React.SFC<PropsType> = (props) => (
-  <div>
-    <Article { ...props } />
-    <CommentContainer { ...props } />
+  <div style={ { padding: 20 } }>
+    <Grid container spacing={ 24 } justify="flex-start">
+      <Grid item xs={ 3 }>
+        <CommentContainer { ...props } />
+      </Grid>
+      <Grid item xs={ 9 }>
+        <Article { ...props } />
+      </Grid>
+    </Grid>
   </div>
 )
 

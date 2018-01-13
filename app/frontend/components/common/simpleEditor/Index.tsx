@@ -1,6 +1,7 @@
 import * as React from "react"
 import styles from "./Index.css"
 import { CommentTooltip } from "components/common/simpleEditor/commentTooltip"
+import TextField from "material-ui/TextField"
 
 interface PropsType {
   content: string
@@ -44,10 +45,15 @@ export class SimpleEditor extends React.Component<PropsType> {
   render() {
     return (
       <div>
-        <textarea
+        <TextField
           className={ styles.editor }
-          cols={ 100 }
-          rows={ 50 }
+          // cols={ 100 }
+          rows={ 45 }
+          rowsMax={ 45 }
+          multiline={ true }
+          InputProps={{
+            disableUnderline: true
+          }}
           // ref={ (elm) => { this.textarea = elm }}
           value={ this.props.content }
           onChange={ (e) => { this.onChange(e.target.value) } }
