@@ -14,7 +14,8 @@ export class NewArticle extends React.Component<any, any> {
 
   render () {
     // レコードが作成されていれば、そのレコードの詳細にリダイレクト
-    if (this.isCreated()) return <Redirect to={ this.props.nextLocation } />
+    // if (this.isCreated()) return <Redirect to={ this.props.nextLocation } />
+    if (this.isCreated()) window.location.href = `/client${ this.props.nextLocation }`
     return (
       <div>
         <ValidateErrors { ...this.props } />
