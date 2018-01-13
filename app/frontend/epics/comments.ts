@@ -24,6 +24,13 @@ const fetchCommentsEpic = (action$, _store, { fetchComments } = api) => {
     .map((comment) => {
       return actions.fullfilledComments(comment.data)
     })
+    .catch((error) => {
+      return Observable.of({
+        type: "FETCH_ERROR",
+        payload: { status: error.response.status },
+        error: true
+      })
+    })
 }
 
 export const commentEpics = combineEpics(

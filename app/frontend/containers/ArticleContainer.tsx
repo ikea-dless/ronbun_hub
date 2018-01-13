@@ -37,16 +37,14 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 type PropsType = DispatchType & ArticleEntity
 
 const BaseComponent: React.SFC<PropsType> = (props) => (
-  <div style={ { padding: 20 } }>
-    <Grid container spacing={ 24 } justify="flex-start">
-      <Grid item xs={ 3 }>
-        <CommentContainer { ...props } />
-      </Grid>
-      <Grid item xs={ 9 }>
-        <Article { ...props } />
-      </Grid>
+  <Grid container spacing={ 24 } justify="flex-start">
+    <Grid item xs={ 3 }>
+      <CommentContainer { ...props } />
     </Grid>
-  </div>
+    <Grid item xs={ 9 }>
+      <Article { ...props } />
+    </Grid>
+  </Grid>
 )
 
 export const ArticleContainer = connect<ArticleEntity, DispatchType, PropsType>(mapStateToProps, mapDispatchToProps)(BaseComponent)

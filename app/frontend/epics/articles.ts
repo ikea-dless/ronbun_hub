@@ -1,5 +1,5 @@
 import { combineEpics, ActionsObservable } from "redux-observable"
-import { Observable } from "rxjs/Observable"
+import { Observable } from "rxjs"
 import * as api from "api-utils/requests"
 import "rxjs/add/operator/mergeMap"
 import "rxjs/add/operator/switchMap"
@@ -49,6 +49,13 @@ const fetchArticleEpic = (action$, _store, { fetchArticle } = api) => {
     )
     .map((article) => {
       return actions.fullfilledArticle(article.data)
+    })
+    .catch((error) => {
+      return Observable.of({
+        type: "FETCH_ERROR",
+        payload: { status: error.response.status },
+        error: true
+      })
     })
 }
 

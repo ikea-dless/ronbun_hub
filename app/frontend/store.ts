@@ -4,11 +4,13 @@ import { epicMiddleware } from "middlewares/epic"
 import { articleReducer } from "reducers/articleReducer"
 import { commentReducer } from "reducers/commentReducer"
 import { articleErrorReducer } from "reducers/articleErrorReducer"
+import { connectionReducer } from "reducers/connectionReducer"
 
 const ronbunReducers = combineReducers({
   article: articleReducer,
   comments: commentReducer,
-  articleErrors: articleErrorReducer
+  articleErrors: articleErrorReducer,
+  connection: connectionReducer
 })
 
 export const configureStore = () => {
