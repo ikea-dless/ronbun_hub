@@ -7,16 +7,20 @@ import { BrowserRouter } from "react-router-dom"
 import { MainRouting } from "App"
 import { ConnectionContainer } from "containers/ConnectionContainer"
 import Reboot from "material-ui/Reboot"
+import { Header } from "components/common/Header"
 
 export const startApp = () => {
   ReactDOM.render(
     <Provider store={ configureStore() } >
       <BrowserRouter basename="/client">
-        <div style={ { padding: 20 } }>
+        <div>
           <Reboot />
-          <ConnectionContainer>
-            <MainRouting { ...this.props } />
-          </ConnectionContainer>
+          <Header />
+          <div style={ { padding: 40 } }>
+            <ConnectionContainer>
+              <MainRouting { ...this.props } />
+            </ConnectionContainer>
+          </div>
         </div>
       </BrowserRouter>
     </Provider>,
