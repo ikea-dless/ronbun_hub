@@ -17,7 +17,7 @@ import Button from "material-ui/Button"
 
 export const Articles: React.SFC<any> = (props) => (
   <Paper style={{ padding: "2% 2% 1% 2%" }}>
-    <Typography type="title">自分の文章リスト</Typography>
+    <Typography type="title">文章リスト</Typography>
     <Table>
       <TableBody>
         { values(props.articles).map((article, index) => (

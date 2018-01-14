@@ -18,7 +18,7 @@ class Api::ArticlesController < Api::ApplicationController
   end
 
   def index
-    render json: current_user.articles.order(updated_at: :desc)
+    render json: Article.order(updated_at: :desc)
   end
 
   private
